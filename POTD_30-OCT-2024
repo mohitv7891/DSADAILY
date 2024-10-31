@@ -1,0 +1,28 @@
+##Pairs with difference k
+class Solution {
+  public:
+    int countPairsWithDiffK(vector<int>& arr, int k) {
+        int pair=0;
+        
+        unordered_map<int, int> freq; 
+        int pairCount = 0;
+
+        // Count frequencies of each element
+        for (int num : arr) {
+            freq[num]++;
+        }
+        
+         // Iterate using iterators 
+        for (auto it = freq.begin(); it != freq.end(); ++it) {
+            int num = it->first;
+            int count = it->second;
+
+            // Check if (num + k) exists in the map
+            if (freq.count(num + k)) {
+                pairCount += count * freq[num + k];
+            }
+        }
+        
+        return pairCount;
+    }
+};
