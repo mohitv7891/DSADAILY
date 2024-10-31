@@ -1,0 +1,40 @@
+##Insert in Sorted way in a Sorted DLL
+class Solution {
+  public:
+    Node* sortedInsert(Node* head, int x) {
+        // Code here
+        Node *newNode = (Node*)malloc(sizeof(Node));
+        newNode->data=x;
+        newNode->prev=NULL;
+        newNode->next=NULL;
+        
+        if(head==NULL)
+       { head=newNode;
+           return head;
+       }
+       
+        Node* p = head;
+        while(p->next!=NULL && p->data<=x){
+            p=p->next;
+        }
+        
+        //last node
+        if(p->next==NULL){
+            if(p->data<=x){
+                p->next=newNode;
+                newNode->prev=p;
+                return head;
+            }
+        }
+        
+        //first node || middle node
+        Node* q =p->prev;
+        newNode->prev=q;
+      if(q!=NULL)  q->next=newNode;
+      if(q==NULL) head=newNode;
+        newNode->next=p;
+        p->prev=newNode;
+        
+        return head;
+    }
+};
