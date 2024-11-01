@@ -1,0 +1,33 @@
+###Find out how many times has an array been rotated
+class Solution {
+  public:
+    int findKRotation(vector<int> &arr) {
+        
+        // find at where out min is spotted
+        int start=0;
+        int end=arr.size()-1;
+        int mid;
+        int minE=INT_MAX;
+        int minIdx=arr.size()-1;
+        int temp=minE;
+        
+        while(start<=end){
+            mid=(start+end)/2;
+            if(arr[start]<=arr[mid]){
+                temp=minE;
+                minE=min(arr[start],minE);
+                if(temp!=minE)  minIdx=start;
+                //if min updated only than minIdx would update
+                start=mid+1;
+            }
+            else{
+                temp=minE;
+                minE=min(arr[mid],minE);
+                if(temp!=minE)  minIdx=mid;
+                end=mid-1;
+            }
+            
+        }
+        return minIdx;
+    }
+};
