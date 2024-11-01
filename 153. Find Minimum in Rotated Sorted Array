@@ -1,0 +1,29 @@
+###LEETCODE 153. Find Minimum in Rotated Sorted Array
+class Solution
+{
+public:
+    int findMin(vector<int>& arr) {
+    
+    int start=0;
+    int end=arr.size()-1;
+    int minE=INT_MAX;
+    int mid;
+    while(start<=end){
+        mid = (start+end)/2;
+        if(arr[start]<=arr[mid]){
+            minE=min(arr[start],minE);
+            //end=mid-1;
+            start=mid+1;
+        }
+        else{
+            minE=min(arr[mid],minE);
+            end=mid-1;
+        }
+        
+        
+    }
+
+    return minE;
+  
+    }
+};
