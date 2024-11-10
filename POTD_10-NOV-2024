@@ -1,0 +1,22 @@
+//POTD_10-NOV-2024
+class Solution {
+  public:
+    // a,b : the arrays
+    // Function to return a list containing the union of the two arrays.
+    vector<int> findUnion(vector<int> &a, vector<int> &b) {
+        int sizeA=a.size();
+        int sizeB=b.size();
+       
+        set<int>ans;
+        
+        for(int num:a){
+            ans.insert(num);
+        }
+        for(int num:b){
+            ans.insert(num);
+        }
+        vector<int>vecAns(ans.begin(),ans.end());
+        return vecAns;
+    }
+     
+};
